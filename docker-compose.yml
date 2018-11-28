@@ -1,0 +1,15 @@
+version: '3'
+services:
+  sftp:
+    image: atmoz/sftp
+    command: foo:bar:1001:2000:inbox,outbox
+    volumes:
+      - sftpv:/home/foo
+      - ./ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key
+      - ./ssh_host_rsa_key.pub:/home/foo/.ssh/keys/ssh_host_rsa_key.pub
+      - ./ssh_host_ed25519_key:/etc/ssh/ssh_host_ed25519_key
+      - ./ssh_host_ed25519_key.pub:/home/foo/.ssh/keys/ssh_host_ed25519_key.pub
+    ports:
+      - "2222:22"
+volumes:
+    sftpv:
